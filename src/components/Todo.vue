@@ -5,6 +5,7 @@
     <div class="todos">
         <div v-for="(todo) in todos" :key="todo.id">
                 {{todo.completed}} {{todo.content }}
+                <button v-on:click="update_todo(todo.id)" >수정</button>
                 <button v-on:click="delete_todo(todo.id)" >삭제</button>
         </div>
     </div>
@@ -32,6 +33,17 @@ export default {
                 console.log(ele.id);
                 if(ele.id === id) {
                     this.todos.splice(index, 1)
+                }
+            })
+        },
+        update_todo(id) {
+            console.log('update!');
+            console.log(id);
+            this.todos.map((ele, index) => {
+                console.log(ele.id);
+                if(ele.id === id) {
+                    console.log(index);
+                    console.log(this.todos[id].content = this.new_todo_content);
                 }
             })
         },
